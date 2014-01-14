@@ -48,6 +48,15 @@
 @interface NGNinjaTableView : UITableView
 
 /**
+ * If set to YES a method - (CGSize)intrinsicContentSize returns view's contentSize.
+ * Moreover, changing the contentSize invalidates view's intrinsicContentSize.
+ * Note that intrinsic content size has no impact on height and width if respective constraints are added to the view.
+ *
+ * Default is NO.
+ */
+@property (assign, nonatomic) BOOL isResizingWithContent;
+
+/**
  * Sets the values and associates it with a given index path.
  * 
  * @param data The value for indexPath. Use nil to remove value associated with indexPath.

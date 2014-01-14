@@ -148,6 +148,26 @@
     [super setDataSource:self.delegateAndDataSourceSurrogate];
 }
 
+#pragma mark - Overidden (isResizingWithContent)
+
+- (void)setContentSize:(CGSize)contentSize
+{
+    if (CGSizeEqualToSize(self.contentSize, contentSize)){
+        return;
+    }
+    
+    [super setContentSize:contentSize];
+    [self invalidateIntrinsicContentSize];
+}
+
+- (CGSize)intrinsicContentSize
+{
+    if (self.isResizingWithContent) {
+        return self.contentSize;
+    }
+    return [super intrinsicContentSize];
+}
+
 #pragma mark - Instance Methods
 
 - (void)setData:(id)data forIndexPath:(NSIndexPath *)indexPath
